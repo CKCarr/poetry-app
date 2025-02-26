@@ -1,6 +1,5 @@
 import Hero from "@/components/poetryHero";
 import Footer from "@/components/Footer";
-import Colors from "@/components/Colors";
 import Bookshelf from "@/components/Bookshelf";
 
 export default function Home() {
