@@ -24,7 +24,7 @@ const config = {
         beaver: "#AA968A",
         "dim-gray": "#6E6A6F",
         cerulean: "#40798C",
-        "Midnight green": "#104547",
+        "midnight-green": "#104547",
       },
     },
   },

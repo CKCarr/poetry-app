@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Poetry Pages",
-  description: "Poetry Project",
+  title: "Poetry Shelf",
+  description: "Poetry Bookshelf Project",
 };
 
 export default function RootLayout({

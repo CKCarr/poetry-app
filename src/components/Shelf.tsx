@@ -12,7 +12,7 @@ const Shelf: React.FC<ShelfProps> = ({ children }) => {
       {children}
 
       {/* Bottom Border as Shelf */}
-      <div className="absolute bottom-[-4px] left-0 w-full h-4 bg-gray-700 dark:bg-gray-600 rounded-md"></div>
+      <div className="absolute bottom-[-6px] left-0 w-full h-4 bg-gray-700 dark:bg-gray-600 rounded-md"></div>
     </div>
   );
 };
