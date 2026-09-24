@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { assetPath } from "@/lib/assetPath";
 
 // This component serves as the hero section for the Poetry Shelf application. It provides a welcoming message and an image to engage users as they enter the site.
 export default function Hero() {
@@ -11,7 +12,7 @@ export default function Hero() {
       </p>
       <div className="mt-4 relative overflow-hidden rounded-md shadow-md  ">
         <Image
-          src={"/images/ink-quill.webp"}
+          src={assetPath("/images/ink-quill.webp")}
           alt="Uploaded Cover"
           width={200}
           height={200}

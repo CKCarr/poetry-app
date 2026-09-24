@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { BookType } from "../data/books";
+import { assetPath } from "@/lib/assetPath";
 
 interface PoetryFormProps {
   closeForm: () => void;
@@ -39,7 +40,7 @@ const PoetryForm: React.FC<PoetryFormProps> = ({ closeForm, onSave }) => {
       author,
       color,
       content,
-      image: image || "/images/ink-quill.webp", // Default image if none uploaded
+      image: image || assetPath("/images/ink-quill.webp"), // Default image if none uploaded
       isPublic,
     };
 

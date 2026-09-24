@@ -1,4 +1,5 @@
 // 📂 data/books.ts
+import { assetPath } from "@/lib/assetPath";
 export interface BookType {
   id: number;
   title: string;
@@ -18,7 +19,7 @@ const BookList: BookType[] = [
     color: "#702632",
     content:
       "Ocean of chaos and contemplation,\nSailing to the destination,\nwave after wave...",
-    image: "/images/beachglass.jpg",
+    image: assetPath("/images/beachglass.jpg"),
     isPublic: true,
   },
   { id: 2, title: "Poem Collection 2", color: "#362023", isPublic: true },

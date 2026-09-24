@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { assetPath } from "@/lib/assetPath";
 // The Footer component provides links to website builder GitHub, LinkedIn, and personal website. It is styled to match the overall theme of the Poetry Shelf application and is positioned at the bottom of the page.
 // will update to be a different component with a different name and content in the future.
 export default function Footer() {
@@ -13,7 +14,7 @@ export default function Footer() {
       >
         <Image
           aria-hidden
-          src="/file.svg"
+          src={assetPath("/file.svg")}
           alt="File icon"
           width={16}
           height={16}
@@ -28,7 +29,7 @@ export default function Footer() {
       >
         <Image
           aria-hidden
-          src="/window.svg"
+          src={assetPath("/window.svg")}
           alt="Window icon"
           width={16}
           height={16}
@@ -43,7 +44,7 @@ export default function Footer() {
       >
         <Image
           aria-hidden
-          src="/globe.svg"
+          src={assetPath("/globe.svg")}
           alt="Globe icon"
           width={16}
           height={16}
