@@ -10,7 +10,7 @@ interface BookModalProps {
   onSave: (updatedBook: BookType) => void;
   onDelete: (id: number) => void;
 }
-
+// BookModal component for viewing and editing book details
 const BookModal: React.FC<BookModalProps> = ({
   book,
   onClose,
@@ -67,7 +67,11 @@ const BookModal: React.FC<BookModalProps> = ({
         {/* Delete Button */}
         <button
           className="absolute bottom-2 right-2 text-red-600 hover:text-red-800 dark:text-red-400"
-          onClick={() => onDelete(book.id)}
+          onClick={() => {
+  if (window.confirm(`Delete "${book.title}"? This cannot be undone.`)) {
+    onDelete(book.id);
+  }
+}}
         >
           🗑 Delete
         </button>
@@ -75,7 +79,7 @@ const BookModal: React.FC<BookModalProps> = ({
         {/* Open Book Effect */}
         <div className="relative w-full flex flex-col sm:flex-row bg-gray-100 dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden border border-gray-300 dark:border-gray-600">
           {/* 📖 Left Page (Title, Author, Image) */}
-          <div className="relative w-full sm:w-1/2 p-6 bg-bone dark:bg-gray-800 border-r border-gray-300 dark:border-gray-600">
+          <div className="relative min-w-0 w-full sm:w-1/2 p-6 bg-bone dark:bg-gray-800 border-r border-gray-300 dark:border-gray-600">
             {isEditing ? (
               <>
                 <input
@@ -114,9 +118,9 @@ const BookModal: React.FC<BookModalProps> = ({
               </>
             ) : (
               <>
-                <h2 className="text-3xl font-bold text-gunmetal dark:text-white mb-4">
-                  {book.title}
-                </h2>
+                <h2 className="mb-4 max-w-full break-all text-3xl font-bold text-gunmetal dark:text-white">
+  {book.title}
+</h2>
                 <p className="text-lg text-delft-blue dark:text-gray-300 mb-4">
                   by {book.author || "Unknown Author"}
                 </p>
@@ -136,6 +140,22 @@ const BookModal: React.FC<BookModalProps> = ({
               </>
             )}
           </div>
+          {/* Right page: poem text */}
+<div className="min-w-0 w-full sm:w-1/2 p-6 dark:bg-gray-700">
+  {isEditing ? (
+    <textarea
+      name="content"
+      value={editedBook.content || ""}
+      onChange={handleChange}
+      placeholder="Write your poem here..."
+      className="min-h-80 w-full resize-y rounded border p-3 dark:bg-gray-800 dark:text-white"
+    />
+  ) : (
+    <p className="whitespace-pre-wrap break-words text-gray-800 dark:text-white">
+      {book.content || "No poem written in this book yet."}
+    </p>
+  )}
+</div>
         </div>
 
         {/* Save Button */}

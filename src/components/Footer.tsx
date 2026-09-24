@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
-
+// The Footer component provides links to website builder GitHub, LinkedIn, and personal website. It is styled to match the overall theme of the Poetry Shelf application and is positioned at the bottom of the page.
+// will update to be a different component with a different name and content in the future.
 export default function Footer() {
   return (
     <footer className="footer-container bg-gunmetal text-anti-flash-white h-24 flex flex-col justify-center items-center w-full">

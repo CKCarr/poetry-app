@@ -17,7 +17,7 @@ const colors = [
   { name: "Beaver", hex: "#AA968A" },
   { name: "Dim gray", hex: "#6E6A6F" },
 ];
-
+// The ColorPallette component displays a collection of colors with their names and hex codes. It is designed to be used in the Poetry Shelf application to allow users to select colors for their poems or other elements.
 export default function ColorPallette() {
   return (
     <div className="w-full flex flex-wrap justify-center gap-4 p-6 bg-gray-100 dark:bg-gray-900">

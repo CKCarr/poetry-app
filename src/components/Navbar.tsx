@@ -1,18 +1,24 @@
 "use client";
 import React, { useState } from "react";
 import PoetryForm from "./PoetryForm";
+import type { BookType } from "../data/books";
 
-export default function Navbar() {
+interface NavbarProps {
+  onSave: (newBook: BookType) => void;
+}
+
+export default function Navbar({ onSave }: NavbarProps) {
   const [showForm, setShowForm] = useState(false);
 
   return (
     <nav className="w-full bg-ultra-violet text-ghost-white p-6 border-b-4 border-gunmetal flex justify-between items-center">
       {/* Logo / Title */}
-      <h1 className="text-2xl text-periwinkle">📖 My Poetry Shelf</h1>
+      <h1 className="text-2xl text-periwinkle">📖 Poetry Shelf</h1>
 
       {/* Navbar Buttons */}
       <div className="flex gap-4">
         <button className="bg-space-cadet text-ghost-white px-4 py-2 rounded hover:bg-delft-blue">
+          {/* TODO : READ poem button for search keyword & Author  */}
           Read Poems
         </button>
 
@@ -35,7 +41,7 @@ export default function Navbar() {
             >
               ✕
             </button>
-            <PoetryForm closeForm={() => setShowForm(false)} />
+            <PoetryForm closeForm={() => setShowForm(false)} onSave={onSave} />
           </div>
         </div>
       )}
