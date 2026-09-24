@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useState } from "react";
 import { BookType } from "../data/books";
 
@@ -6,10 +7,12 @@ interface PoetryFormProps {
   closeForm: () => void;
   onSave: (newBook: BookType) => void;
 }
-
+// The PoetryForm component provides a user interface for creating a new poem. It includes fields for the poem's title, content, color, image, and visibility (public/private). Upon submission, it calls the onSave function to add the new poem to the bookshelf and closes the form.
 const PoetryForm: React.FC<PoetryFormProps> = ({ closeForm, onSave }) => {
   const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("CKCarr");
+  // const [author, setAuthor] = useState("CKCarr");
+  // TODO: Let the user enter or select an author when profiles are added.
+  const author = "CKCarr";
   const [color, setColor] = useState("#8d2133"); // Default color
   const [content, setContent] = useState("");
   const [isPublic, setIsPublic] = useState(true); // ✅ Public by default
@@ -98,11 +101,18 @@ const PoetryForm: React.FC<PoetryFormProps> = ({ closeForm, onSave }) => {
 
         {/* Display Image Preview */}
         {image && (
-          <img
+          <Image
             src={image}
-            alt="Uploaded Cover"
+            alt="Uploaded cover preview"
+            width={160}
+            height={160}
             className="w-40 h-auto mt-2 rounded-md shadow-md"
           />
+          // <img
+          //   src={image}
+          //   alt="Uploaded Cover"
+          //   className="w-40 h-auto mt-2 rounded-md shadow-md"
+          // />
         )}
 
         {/* ✅ Public/Private Toggle */}

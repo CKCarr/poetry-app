@@ -1,22 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import BookList, { BookType } from "../data/books";
+import { BookType } from "../data/books";
 import Book from "../components/Book";
 import Shelf from "../components/Shelf";
-import BookModal from "./BookModal";
+interface BookshelfProps {
+  books: BookType[];
+  onSelectBook: (book: BookType) => void;
+}
 
-const Bookshelf: React.FC = () => {
+const Bookshelf: React.FC<BookshelfProps> = ({ books, onSelectBook }) => {
   const [booksPerRow, setBooksPerRow] = useState<number>(5); // Default for large screens
-  const [selectedBook, setSelectedBook] = useState<BookType | null>(null); // Track selected book
-
-  // disable scrolling when modal is open
-  useEffect(() => {
-    if (selectedBook) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [selectedBook]);
 
   // Dynamically update booksPerRow based on screen size
   useEffect(() => {
@@ -33,13 +26,13 @@ const Bookshelf: React.FC = () => {
   }, []);
 
   // Automatically split books into rows
-  const shelves: BookType[][] = [];
-  for (let i = 0; i < BookList.length; i += booksPerRow) {
-    shelves.push(BookList.slice(i, i + booksPerRow));
-  }
+const shelves: BookType[][] = Array.from(
+  { length: Math.ceil(books.length / booksPerRow) },
+  (_, index) => books.slice(index * booksPerRow, (index + 1) * booksPerRow)
+);
 
   return (
-    <div className="flex flex-col items-center p-8 w-full bg-timberwolf dark:bg-gray-800">
+    <div className="flex flex-col items-center p-8 w-full  dark:bg-gray-800">
       <h1 className="text-5xl font-bold text-gray-800 dark:text-gray-200 mb-6">
         My Poetry Bookshelf
       </h1>
@@ -59,7 +52,7 @@ const Bookshelf: React.FC = () => {
               <Book
                 key={bookIndex}
                 book={book}
-                onClick={() => setSelectedBook(book)}
+                onClick={() => onSelectBook(book)}
               />
             ))}
           </Shelf>
@@ -68,16 +61,6 @@ const Bookshelf: React.FC = () => {
 
       {/* Bookshelf Base */}
       <div className="w-full max-w-5xl h-6 bg-gray-700 dark:bg-gray-600 rounded-t-md "></div>
-      {selectedBook && (
-        <BookModal
-          book={selectedBook}
-          onClose={() => setSelectedBook(null)}
-          onSave={(book: BookType) => {
-            // Implement save functionality here
-            console.log("Book saved:", book);
-          }}
-        />
-      )}
     </div>
   );
 };

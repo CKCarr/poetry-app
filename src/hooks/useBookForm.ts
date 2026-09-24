@@ -8,7 +8,7 @@ const useBookForm = (
   const [isEditing, setIsEditing] = useState(false);
   const [editedBook, setEditedBook] = useState<BookType>({ ...book });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | textarea>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setEditedBook((prevBook) => ({
       ...prevBook,
       [e.target.name]: e.target.value,

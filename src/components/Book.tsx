@@ -5,7 +5,7 @@ interface BookProps {
   book: BookType;
   onClick: () => void;
 }
-
+// Book component representing a single book on the shelf
 const Book: React.FC<BookProps> = ({ book, onClick }) => {
   return (
     <div
@@ -21,7 +21,17 @@ const Book: React.FC<BookProps> = ({ book, onClick }) => {
       onClick={onClick} // Open book modal on click
     >
       <div className="absolute inset-y-0 left-1 w-[2px] bg-anti-flash-white opacity-50"></div>
-      <span className="p-5 mb-12 ">{book.title}</span>{" "}
+      <span
+  className="mb-12 max-w-full overflow-hidden break-words px-1 text-center text-xs leading-tight"
+  style={{
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
+    WebkitLineClamp: 4,
+  }}
+  title={book.title}
+>
+  {book.title}
+</span>
       {/* Hide title on mobile */}
       <div className="absolute inset-y-0 right-1 w-[2px] bg-anti-flash-white opacity-50"></div>
     </div>
